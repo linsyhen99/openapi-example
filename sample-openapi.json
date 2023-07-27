@@ -2,13 +2,49 @@
   "openapi": "3.0.3",
   "info": {
     "title": "openapi-sample-repo",
-    "description": "",
+    "description": "This is a sample generated openapi documentation for reference",
     "license": {
       "name": ""
     },
     "version": "0.1.0"
   },
   "paths": {
+    "/api/v1/employee": {
+      "post": {
+        "tags": [
+          "crate"
+        ],
+        "operationId": "create_new_employee_record",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeInputParam"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created employees",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Please double check your input parameters"
+          },
+          "500": {
+            "description": "Something went wrong"
+          }
+        }
+      }
+    },
     "/api/v1/employee/{id}": {
       "get": {
         "tags": [
@@ -93,6 +129,7 @@
           "age": {
             "type": "integer",
             "format": "int32",
+            "example": 24,
             "minimum": 0
           },
           "gender": {
@@ -101,17 +138,59 @@
           "id": {
             "type": "integer",
             "format": "int64",
+            "example": "The unique ID that represents the employee",
             "minimum": 0
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "example": "Bee Cheng"
           },
           "phone_no": {
             "type": "integer",
             "format": "int32",
+            "example": "91929394",
             "minimum": 0
           }
         }
+      },
+      "EmployeeInputParam": {
+        "type": "object",
+        "required": [
+          "name",
+          "age",
+          "gender",
+          "phone_no"
+        ],
+        "properties": {
+          "age": {
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "example": 24,
+            "minimum": 0
+          },
+          "gender": {
+            "$ref": "#/components/schemas/GenderEnum"
+          },
+          "name": {
+            "type": "string",
+            "example": "Tahj Mabo1s"
+          },
+          "phone_no": {
+            "type": "integer",
+            "format": "int32",
+            "example": "91929394",
+            "minimum": 0
+          }
+        }
+      },
+      "GenderEnum": {
+        "type": "string",
+        "enum": [
+          "Male",
+          "Female",
+          "UnidentifiedAnimal"
+        ]
       }
     }
   }
