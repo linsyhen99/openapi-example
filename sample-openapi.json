@@ -78,6 +78,9 @@
               }
             }
           },
+          "400": {
+            "description": "Please double check your input parameters"
+          },
           "500": {
             "description": "Something went wrong"
           }
