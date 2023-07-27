@@ -48,6 +48,7 @@ get,
 path = "/api/v1/employee/{id}",
 responses(
 (status = 200, description = "Successfully retrieved employees", body = [Employee]),
+(status = 400, description = "Please double check your input parameters")
 (status = 500, description = "Something went wrong")
 ),
 params(
