@@ -1,7 +1,8 @@
+use crate::controllers::endpoints::serve_endpoint;
 use crate::endpoints::serve_endpoint;
 
 mod models;
-mod endpoints;
+mod controllers;
 mod openapi_generator;
 
 #[tokio::main]
